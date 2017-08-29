@@ -4,8 +4,6 @@ var Videos = Backbone.Collection.extend({
 
   initialize: function(collection) {
     // override youtube's complex id field
-
-
   }
 
 

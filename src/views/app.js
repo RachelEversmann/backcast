@@ -2,16 +2,20 @@ var AppView = Backbone.View.extend({
 
   el: '#app',
 
+  model: Video,
+
   initialize: function() {
-    this.videos = new Videos();
-  //  console.log('this.videos: ', this.videos);
-    this.on('all', this.render, this);
+    this.videos = new Videos(fakeVideoData);
+    this.render();
+    this.player = new VideoPlayerView({collection: this.videos});
+    this.videoList = new VideoListView({el: this.$('.list'), collection: this.videos});
   },
 
 
   render: function() {
     this.$el.html(this.template());
-  //  console.log("render app view");
+    this.videoList.render(); 
+    // this.$el.append(this.videoList.$el);
     return this;
   },
 
